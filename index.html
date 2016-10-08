@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="All Countries">
+    <meta name="author" content="Islam AlZatary">
+    <link rel="shortcut icon" href="img/faviconnn.png">
+
+    <title>All Countries</title>
+
+    <!-- Lego core CSS -->
+    <link href="css/lego.css" rel="stylesheet" type='text/css' media='all'>
+	<!-- Phone/Tablet core CSS -->
+	<link rel='stylesheet' href='css/lego_phablet.css' type='text/css' media='all' />
+    <!-- Countries CSS -->
+    <link href="css/countries.css" rel="stylesheet">
+	<!-- Flag Sprite CSS -->
+    <link href="css/flags_sprite2.css" rel="stylesheet">
+	<!-- Frameworks -->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/angular.min.1.2.21.js"></script>
+	<script src="js/lego.js"></script>
+
+	
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<script>
+		var AppCountries = angular.module('AllCountries', []);
+
+		AppCountries.controller('CountriesList', function($scope,$http){
+			// Reference from: https://gist.github.com/wilhelm-murdoch/729754#file-jsoncountries-json
+				$http.get('json/countries.json').success(function(data){
+					$scope.countries = data
+				});
+		});
+	AppCountries.filter('searchFor', function(){
+
+	// All filters must return a function. The first parameter
+	// is the data that is to be filtered, and the second is an
+	// argument that may be passed with a colon (searchFor:searchCountry)
+
+	return function(arr, searchCountry){
+
+		if(!searchCountry){
+			return arr;
+		}
+
+		var result = [];
+
+		searchCountry = searchCountry.toLowerCase();
+
+		// Using the forEach helper method to loop through the array
+		angular.forEach(arr, function(countries, countrIndex){
+			if(countries.name.toLowerCase().indexOf(searchCountry) !== -1){
+				result.push(countries);
+			}
+
+		});
+		return result;
+	};
+
+});
+	</script>
+  </head>
+  <body ng-app="AllCountries">
+	<header class="main-header">
+		
+	</header>
+	<div class="main-wrapper">
+		<div ng-controller="CountriesList">
+			<div class="country_search padding-20 c">
+				<input type="text" id="cs" name="cs" class="grid-4 grid-t-8 grid-p-8 border-rad-4" ng-model="searchCountry" placeholder="Enter The Country..." />
+				<button class="btn large orange tWhite bold search">Search</button>
+			</div>
+			<ul class="flags">
+				<li ng-repeat="country in countries | searchFor:searchCountry" class="flag">
+					<span class="i-{{country.code.toLowerCase()}} tooltip_down" data-tooltip="{{country.name}}"></span>
+					<span class="country_name">{{country.name}}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- Core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="js/counties.js"></script>
+	
+  </body>
+</html>

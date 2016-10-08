@@ -1,0 +1,63 @@
+/************** Desktop Min 1200 *************/
+@media only screen and (min-width: 1200px) {
+    .phone_show { display:none!important;}
+}
+/************** Desktop Min 1140 *************/
+@media only screen and (min-width: 1140px) {
+    .phone_show { display:none!important;}
+}
+/************** Desktop Default *************/
+@media only screen and (min-width: 1024px) {
+    .phone_show { display:none!important;}
+}
+/************** Table to Mini Desktop *************/
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+	.wrapper_1140, .wrapper_1200 {
+		width:100%;
+	}
+	.phone_show { display:none!important;}
+    .grid-t-1{width:10%;}
+    .grid-t-2{width:20%;}
+    .grid-t-3{width:30%;}
+    .grid-t-4{width:40%;}
+    .grid-t-5{width:50%;}
+    .grid-t-6{width:60%;}
+    .grid-t-7{width:70%;}
+    .grid-t-8{width:80%;}
+    .grid-t-9{width:90%;}
+    .grid-t-10{width:100%;}
+}
+/************** Phone to Mini Tablet *************/
+@media only screen and (max-width: 767px) {
+	.wrapper_960, .wrapper_1140, .wrapper_1200 {
+		width:100%;
+	}
+    .phone_hide { display:none !important;}
+    .phone_show { display:block !important;}
+    /***** Start Phone Grid Styles ******/
+    .grid-p-1{width:10%;}
+    .grid-p-2{width:20%;}
+    .grid-p-3{width:30%;}
+    .grid-p-4{width:40%;}
+    .grid-p-5{width:50%;}
+    .grid-p-6{width:60%;}
+    .grid-p-7{width:70%;}
+    .grid-p-8{width:80%;}
+    .grid-p-9{width:90%;}
+    .grid-p-10{width:100%;}
+    /**********************************/
+    .margin_reset_phone { margin:0 !important;}
+    .padding_reset_phone { padding:0 !important;}
+     /**** Font Size Phone Options ********/
+    .font-p-s { font-size:0.9em}
+    .font-p-n { font-size:1em}
+    .font-p-m { font-size:1.2em}
+    .font-p-l { font-size:1.4em}
+    .font-p-xl { font-size:1.8em}
+    .font-p-xxl { font-size:2.2em}
+    .font-p-xxxl { font-size:3em}
+    /*************************************************/
+    .padding-p-5 {
+        padding:5px;
+    }
+}
